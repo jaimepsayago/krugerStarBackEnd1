@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Hola desde Vista!!!</h1>
+
+<h1 th:text= "${titulo}"></h1>
+
+<table th:if="${not usuario.isEmpty()}">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="u: ${usuario}">
+				<td th:text="${u.nombre}"></td>
+				<td th:text="${u.apellido}"></td>
+				<td th:text="${u.email}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
