@@ -17,5 +17,7 @@ public class Web {
 	public String welcomehtml() {
 		return "<h1> <font face='verdana'>Backend Kruger!!!</font></h1>";
 	}
+	
+	
 
 }

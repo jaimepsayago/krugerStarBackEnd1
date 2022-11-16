@@ -3,11 +3,16 @@ package com.kruger.demo.controllers;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kruger.demo.model.Usuario;
+import com.kruger.demo.service.IServicio;
+import com.kruger.demo.service.MiServicio;
+import com.kruger.demo.service.MiServicio2;
 
 @org.springframework.stereotype.Controller //enviar los datos a una vista - object model 
 @RequestMapping("/app/")
@@ -60,6 +65,17 @@ public class Controller {
 		
 	}
 	
+	
+	@Autowired
+	@Qualifier("miservicio")
+	private IServicio servicio;
+	
+	@GetMapping("/cdi") //mapeo de la ruta con el servicio 
+	public String cdi(Model model) {
+		model.addAttribute("objeto", servicio.operacion());
+		return "cdi"; //index hace refencia a la vista
+		
+	}
 	
 	
 	
