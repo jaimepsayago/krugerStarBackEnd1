@@ -1,9 +1,13 @@
 package com.kruger.demo.repository;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import java.util.stream.Collectors;
@@ -35,27 +39,36 @@ public class UsuarioRepository implements CommonRepository<Usuario> {
 
 	@Override
 	public Iterable<Usuario> save(Collection<Usuario> domains) {
-		// TODO Auto-generated method stub
-		return null;
+		domains.forEach(this::save);
+		return findAll();
 	}
 
 	@Override
 	public void delete(Usuario domain) {
-		// TODO Auto-generated method stub
+		usuarios.remove(domain.getId());
 		
 	}
 
 	@Override
 	public Usuario findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return usuarios.get(id);
 	}
-
 	
 	//lambdas y streams en java 
-	// collections map, arraylist, vector, 
+	// collections map, arraylist, vector,
+	//agregar un array list y visualizar en la api rest
+	
+	private List<Usuario> usuariosLista = new LinkedList<Usuario>(Arrays.asList(
+			new Usuario("hola jaime"),
+			new Usuario("este es un objeto"),
+			new Usuario("desde spring boot")			
+			));
+	
 	@Override
 	public Iterable<Usuario> findAll() {
+		
+	//	return this.usuariosLista;
+		
 		return usuarios.entrySet()
 				.stream()
 					.sorted(entryComparator)
