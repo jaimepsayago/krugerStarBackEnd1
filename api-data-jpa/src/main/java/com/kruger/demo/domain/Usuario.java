@@ -6,6 +6,12 @@ import java.util.Objects;
 //import java.util.Objects;
 import java.util.UUID;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -15,15 +21,20 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 //@Data
+@Entity //
 public class Usuario {
 	
 	@NotNull //para controlar que el campo no sea nulo.
+	 @Id
+	 @GeneratedValue(generator = "system-uuid")
+	 @GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private String id;
 	
 	@NotNull
 	@NotBlank
 	private String description;
 	
+	@Column(insertable = true, updatable = false)
 	private LocalDateTime created;
 	private LocalDateTime modified;
 	

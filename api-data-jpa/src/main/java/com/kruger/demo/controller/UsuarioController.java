@@ -22,7 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.kruger.demo.domain.Usuario;
 import com.kruger.demo.domain.UsuarioBuilder;
-import com.kruger.demo.domain.repository.UsuarioRepository;
+import com.kruger.demo.repository.UsuarioRepository;
 import com.kruger.demo.validation.UsuarioValidationError;
 import com.kruger.demo.validation.UsuarioValidationErrorBuilder;
 
